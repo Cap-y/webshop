@@ -1,6 +1,6 @@
 from django.db import models
 
-class item(models.Model)
+#class item(models.Model)
 #Namn på det som är köpt
 #Vad det som är köpt kostar
 #Vilken person som köpt det och dennes ID

@@ -8,4 +8,4 @@ def index(request):
 def items(request):
    # return HttpResponse('Test')
     context = {"Albin": "Test"}
-    return render(request, 'purchases/test.html', context)
+    return render(request, 'purchases/items.html', context)
