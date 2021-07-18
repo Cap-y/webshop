@@ -1,31 +1,33 @@
 from django.db import models
+from django.conf import settings
 
 
 class Item(models.Model):
     title = models.CharField(max_length = 200)
     cost = models.IntegerField(default=0)
     created = models.DateField(auto_now_add=True)
+    photo = models.ImageField(upload_to= settings.MEDIA_ROOT, null=True, blank=True)
 
     def __str__(self):
-        return f"Produkt {self.title} som kostar {self.cost}kr köpt datumet {self.created}"
+        return f"Produkt {self.title} som kostar {self.cost}kr inlagt {self.created}"
 
 class Person(models.Model):
     hireid = models.IntegerField(default=0)
     name = models.CharField(max_length = 200)
-    items = models.ManyToManyField(Item, models.DO_NOTHING)#, through="ItemRelationship")
+    items = models.ManyToManyField(Item, through="ItemRelationship")
    
     def __str__(self):
         return f"ID: {self.hireid} Namn: {self.name}"
 
-# class ItemRelationship(models.Model):
-#     person = models.ForeignKey(Person, on_delete=models.CASCADE)
-#     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-#     created = models.DateField(auto_now_add=True)
-#     number = models.IntegerField(null=True, blank=True)
+class ItemRelationship(models.Model):
+    persons = models.ForeignKey(Person, on_delete=models.CASCADE)
+    items = models.ForeignKey(Item, on_delete=models.CASCADE)
+    created = models.DateField(auto_now_add=True)
+    number = models.IntegerField(null=True, blank=True)
     
 
-#     def __str__(self):
-#         return f"{self.item} - {self.person}"
+    def __str__(self):
+        return f"{self.persons} {self.items} {self.number}"
 
 
     
