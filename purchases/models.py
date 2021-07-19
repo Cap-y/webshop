@@ -22,12 +22,12 @@ class Person(models.Model):
 class ItemRelationship(models.Model):
     persons = models.ForeignKey(Person, on_delete=models.CASCADE)
     items = models.ForeignKey(Item, on_delete=models.CASCADE)
-    created = models.DateField(auto_now_add=True)
+    buydate = models.DateField(auto_now_add=True)
     number = models.IntegerField(null=True, blank=True)
     
 
     def __str__(self):
-        return f"{self.persons} {self.items} {self.number}"
+        return f"{self.persons} köpt {self.items} antal {self.number} vid datum {self.buydate}"
 
 
     
