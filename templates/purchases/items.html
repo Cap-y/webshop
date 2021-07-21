@@ -4,42 +4,86 @@
 {% block title %}Items{% endblock %}
 
 {% block content %}
-<center><h1>Affär</h1></center>
+
 <br>
+ <!-- Button trigger modal -->
+ <div class="sticky-top">
+<center>
+<button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Utför köp
+</button>
+</center>
+<br>
+</div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Välj anställd</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
+          <select class="form-select form-select-lg" size="15" aria-label="size 15 select example">
+ 
+          {% for person in persons %}
+          
+         
+          <option value="1">ID: {{person.hireid}} Namn: {{person.name}}</option>
+          
 
+          {% endfor %}
+
+          </select>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Köp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Kort som representering av produkter -->
 <div class="row" >
 
-{% for item in item %}
+{% for item in items %}
 
-    <div class="col-2">
-        <div class="shadow p-3 mb-5 bg-white rounded">
+  <div class="col-3 w-25">
+    <div class="shadow p-3 mb-5 bg-white rounded">
+     <div class= "card">
+    
 
 {% if item.photo.url is not None %}
-
-            <img class="card-img-top" style="width: 180px" height="230px"; src="{{item.photo.url}}" alt="">
-
+    <div class="d-flex justify-content-center">
+            <img class="card-img-top"; style="width:210px;height:250px" src="{{item.photo.url}}">
+    </div>
 {% else %}
 
-             <img class="card-img-top" src='webshop/default.jpg'>
+            <img class="card-img-top"; style="width: 210px" height: "250px"  src='webshop/default.jpg'>
 
 {% endif %}
-
+<div class="col align-self-center">
             <div class="card-body">
                 <h5 class="card-title">{{item.title}}</h5>
+                
                 <p class="card-text">{{item.cost}}kr</p>
-                <a href="#" class="btn btn-primary">Lägg till</a>
+                
+                
+                <button type="submit" class="btn btn-primary ">Lägg till</a>
+                
             </div>
+</div>
+      </div>
     </div>
   </div>
 
 {% endfor %}
 
 </div>
-		
 
-	
-	
 
 {% endblock %}

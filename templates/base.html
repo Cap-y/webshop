@@ -22,27 +22,14 @@
 		
 			<ul class="navbar-nav">
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<button class="btn btn-lg btn-success" type="button">Köp</button>
+				
 				<li class="nav-item"><a class="navbar-brand" href="{% url 'items' %}">Produkter</a></li>
-				<li class="nav-item"><a class="navbar-brand" href="">Kalender</a></li>
-				
-				
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" 
-					aria-haspopup="true" aria-expanded="false">
-					Ändra anställd
-					</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
-					
-				</li>
+				<li class="nav-item"><a class="navbar-brand" href="{% url 'purchased' %}">Kalender</a></li>
 				
 			</ul>
 		</div>
 	</nav>
+	
 
 
 {% block content %}

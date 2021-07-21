@@ -8,8 +8,12 @@ def index(request):
     return render (HttpResponse)
 
 def items(request):
-    return render(request, 'purchases/items.html', 
-            {"item": Item.objects.all()})
+    person = Person.objects.all()
+    items = Item.objects.all()
+    purchases = ItemRelationship.objects.all()
+    context = {"items": items,  "persons": person, "purchases": purchases}
+    return render(request, 'purchases/items.html', context)
+            
 
 def purchased(request):
     person = Person.objects.all()
