@@ -6,7 +6,15 @@
 <center>Gjorda köp</h1></center>
 <br>
 
-
+<br>
+<form method="post">
+<table>
+{{ form }}
+</table>
+{% csrf_token %}
+<button type="submit">KÖP</button>
+</form>
+</br>
 
 {% for purchase in purchases %}
 
@@ -21,7 +29,7 @@
         <br>
 
 
-        {% endfor %}
+{% endfor %}
 
 	
 
