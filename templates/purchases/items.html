@@ -48,23 +48,24 @@
 </div>
 
 <!-- Kort som representering av produkter -->
-<div class="row" >
+<div class="container-fluid" >
+<div class="row justify-content-center">
 
 {% for item in items %}
 
-  <div class="col-3 w-25">
+  <div class="col-md-3 p-3">
     <div class="shadow p-3 mb-5 bg-white rounded">
-     <div class= "card">
+     <div class= "card" >
     
 
 {% if item.photo.url is not None %}
     <div class="d-flex justify-content-center">
-            <img class="card-img-top"; style="width:210px;height:250px" src="{{item.photo.url}}">
+            <img class="card-img-top img-fluid" ; style="height:300px" src="{{item.photo.url}}">
     </div>
 {% else %}
-
-            <img class="card-img-top"; style="width:210px;height:250px"  src="{{default}}">
-
+    <div class="d-flex justify-content-center">
+            <img class="card-img-top img-fluid"; style="width:210px;height:250px"  src="{{default}}">
+    </div>
 {% endif %}
 
 <div class="col align-self-center">
@@ -74,7 +75,7 @@
                 <p class="card-text">{{item.cost}}kr</p>
                 
                 
-                <button type="submit" class="btn btn-primary ">Lägg till</a>
+                <button data-product="{{item.title}}" data-action = "add" type="submit" class="btn btn-primary add-btn update-cart ">Lägg till</a>
                 
             </div>
 </div>
@@ -85,6 +86,6 @@
 {% endfor %}
 
 </div>
-
+</div>
 
 {% endblock %}
